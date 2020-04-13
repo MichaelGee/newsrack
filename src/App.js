@@ -7,8 +7,11 @@ import ScienceCards from "./components/science/sciencecards";
 import MoviesCards from "./components/movies/moviescards";
 import SportsCards from "./components/sports/sportscards";
 import axios from "axios";
+import { fetchData } from "./components/api/apicall";
+
 function App() {
   /* World News */
+  const [worldData, setWorldData] = useState({});
   const [worldImage, setWorldImage] = useState("");
   const [worldTitle, setWorldTitle] = useState("");
   const [worldAbstract, setWorldAbstract] = useState("");
@@ -40,27 +43,51 @@ function App() {
   const [scienceTime, setScienceTime] = useState("");
   const [scienceUrl, setScienceUrl] = useState("");
 
-  /* World */
   useEffect(() => {
-    axios
-      .get(
-        `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((res) => {
-        /*   console.log(res.data.results[0]); */
-        const dataData = res.data.results[0];
-        const dataFromAPI = res.data.results;
-        const newsArray = dataFromAPI.map((news) => news);
-        const items = newsArray.slice(0, 10);
-        console.log("i: ", items);
-        /* const imageUrl = dataData.multimedia[items].url; */
-        const imageUrl = dataFromAPI.map((media) => media.multimedia);
-        const allImage = imageUrl.map((img) => img.url);
-        console.log("img: ", allImage);
-        setWorldImage(imageUrl);
-      })
-      .catch((err) => console.log(err));
+    const getData = async () => {
+      const data = await fetchData();
+      const mainData = data.results;
+      const ten = mainData.slice(0, 10);
+      const title = ten.map((title) => title.title);
+      const abstract = ten.map((abs) => abs.abstract);
+      const byline = ten.map((line) => line.byline);
+      const time = ten.map((time) => time.created_date);
+      const url = ten.map((url) => url.short_url);
+
+      const newData = {
+        title,
+        abstract,
+        byline,
+        time,
+        url,
+      };
+      console.log(newData);
+      setWorldData(newData);
+    };
+    getData();
   }, []);
+
+  /* World */
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${process.env.REACT_APP_API_KEY}`
+  //     )
+  //     .then((res) => {
+  //       /*   console.log(res.data.results[0]); */
+  //       const dataData = res.data.results[0];
+  //       const dataFromAPI = res.data.results;
+  //       const newsArray = dataFromAPI.map((news) => news);
+  //       const items = newsArray.slice(0, 10);
+  //       console.log("i: ", items);
+  //       /* const imageUrl = dataData.multimedia[items].url; */
+  //       const imageUrl = dataFromAPI.map((media) => media.multimedia);
+  //       const allImage = imageUrl.map((img) => img.url);
+  //       console.log("img: ", allImage);
+  //       setWorldImage(imageUrl);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <div className='App'>
@@ -68,7 +95,7 @@ function App() {
       <Banner />
       <h1>World News</h1>
       <div className='word-wrapper'>
-        <WorldCards />
+        <WorldCards data={worldData} />
       </div>
       <h1>Sports</h1>
       <div className='science-wrapper'>
