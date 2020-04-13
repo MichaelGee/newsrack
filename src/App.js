@@ -6,12 +6,13 @@ import WorldCards from './components/world/worldcards';
 import ScienceCards from './components/science/sciencecards';
 import MoviesCards from './components/movies/moviescards';
 import SportsCards from './components/sports/sportscards';
-import axios from 'axios';
+import { fetchData } from './components/api/apicall';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  const dummyImg = './assets/news.jpg';
+  // const dummyImg = './assets/news.jpg';
   /* World News */
-  // const [worldImage, setWorldImage] = useState('');
+  const [worldData, setWorldData] = useState('');
   // const [worldTitle, setWorldTitle] = useState('');
   // const [worldAbstract, setWorldAbstract] = useState('');
   // const [worldByLine, setWorldByLine] = useState('');
@@ -42,39 +43,32 @@ function App() {
   // const [scienceTime, setScienceTime] = useState('');
   // const [scienceUrl, setScienceUrl] = useState('');
 
-  /* World */
   useEffect(() => {
-    axios
-      .get(
-        // `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${process.env.REACT_APP_API_KEY}`,
-        `https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=${process.env.REACT_APP_API_KEY}`,
-      )
-      .then((res) => {
-        /*   console.log(res.data.results[0]); */
-        // const dataData = res.data.results[0];
-        const dataFromAPI = res.data.results;
-        const newsArray = dataFromAPI.map((news) => news).slice(0, 10);
-        console.log('news: ', newsArray);
+    const getData = async () => {
+      try {
+        const data = await fetchData('world');
+        const newsArray = data.results.slice(0, 10);
         const articles = newsArray.map((article) => {
           return {
-            img:
-              article.multimedia[0].url !== null
-                ? article.multimedia[0].url
-                : dummyImg,
+            img: article.multimedia[0].url,
             imgCaption:
               article.multimedia[0].caption !== ''
                 ? article.multimedia[0].caption
                 : 'N/A',
+            title: article.title,
+            abstract: article.abstract,
+            byline: article.byline,
+            release_date: article.created_date,
+            url: article.short_url,
           };
         });
-
-        // const imageUrl = dataData.multimedia[items].url;
-        // const imageUrl = dataFromAPI.map((media) => multimedia);
-        // const allImage = imageUrl.map((img) => img.url);
-        // console.log("img: ", allImage);
-        // setWorldImage(imageUrl);
-      })
-      .catch((err) => console.log(err));
+        console.log('articles', articles);
+        setWorldData(articles);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
   }, []);
 
   return (
@@ -82,8 +76,14 @@ function App() {
       <Navbar />
       <Banner />
       <h1>World News</h1>
+      {/* <div className="word-wrapper">
+        <WorldCards /> */}
       <div className="word-wrapper">
-        <WorldCards />
+        {/* {worldData !== [] &&
+          worldData.map((article) => (
+            <WorldCards key={uuidv4()} data={article} />
+          ))} */}
+        <WorldCards data={worldData} />
       </div>
       <h1>Sports</h1>
       <div className="science-wrapper">
