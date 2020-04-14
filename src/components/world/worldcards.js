@@ -4,7 +4,7 @@ const WorldCards = ({ news }) => {
   return (
     <a href={news?.url} target='_blank' rel='noopener noreferrer'>
       <div className='card-container'>
-        <div className='shadow-lg rounded-lg bg-white max-w-sm m-8 p-4 notification-box w-10/12'>
+        <div className='shadow-lg card rounded-lg bg-white max-w-sm m-8 p-4 notification-box w-10/12'>
           <div className='text-sm pb-2'>
             <img
               src={news?.img || "../assets/news.jpg"}
@@ -12,7 +12,7 @@ const WorldCards = ({ news }) => {
               alt='news-article'
             />
           </div>
-          <div className='text-sm text-gray-600 font-bold tracking-tight '>
+          <div className=' title text-sm text-black font-bold tracking-tight '>
             {news?.title}
           </div>
           <div className='text-sm text-gray-800  tracking-tight '>

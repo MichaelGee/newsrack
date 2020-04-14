@@ -8,6 +8,7 @@ import MoviesCards from "./components/movies/moviescards";
 import SportsCards from "./components/sports/sportscards";
 import { fetchData } from "./components/api/apicall";
 import { v4 as uuidv4 } from "uuid";
+import LazyLoad from "react-lazy-load";
 import { newsArray } from "./components/api/apicall";
 
 function App() {
@@ -68,7 +69,9 @@ function App() {
       <div className='world-wrapper'>
         {worldData !== [] &&
           worldData?.map((article) => (
-            <WorldCards key={uuidv4()} news={article} />
+            <LazyLoad key={uuidv4()}>
+              <WorldCards key={uuidv4()} news={article} />
+            </LazyLoad>
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -85,7 +88,9 @@ function App() {
       <div className='sports-wrapper'>
         {sportData !== [] &&
           sportData?.map((article) => (
-            <SportsCards key={uuidv4()} news={article} />
+            <LazyLoad key={uuidv4()}>
+              <SportsCards key={uuidv4()} news={article} />
+            </LazyLoad>
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -104,7 +109,9 @@ function App() {
       <div className='business-wrapper'>
         {businessData !== [] &&
           businessData?.map((article) => (
-            <BusinessCards key={uuidv4()} news={article} />
+            <LazyLoad key={uuidv4()}>
+              <BusinessCards key={uuidv4()} news={article} />
+            </LazyLoad>
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -123,7 +130,9 @@ function App() {
       <div className='movies-wrapper'>
         {moviesData !== [] &&
           moviesData?.map((article) => (
-            <MoviesCards key={uuidv4()} news={article} />
+            <LazyLoad key={uuidv4()}>
+              <MoviesCards key={uuidv4()} news={article} />
+            </LazyLoad>
           ))}
       </div>
     </div>
