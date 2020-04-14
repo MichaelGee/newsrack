@@ -13,15 +13,15 @@
 
 .card-container{
   background: #fffdfd;
-  height: 100%;
+  height: 100% !important;
   width: 100%;
   margin: 0 auto;
 }
 
 .world-wrapper, .sports-wrapper, .business-wrapper, .movies-wrapper{
    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
-   row-gap: 0.8rem;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+   row-gap: 0.3rem;
 }
 
 /* #0414a0 */
