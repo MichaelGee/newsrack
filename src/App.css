@@ -10,4 +10,18 @@
   border-bottom: 1px solid  #e2e8f0;
 }
 
+
+.card-container{
+  background: #fffdfd;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.world-wrapper, .sports-wrapper, .business-wrapper, .movies-wrapper{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+   row-gap: 0.8rem;
+}
+
 /* #0414a0 */

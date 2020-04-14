@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const url = `https://api.nytimes.com/svc/topstories/v2/`;
 
@@ -7,7 +7,7 @@ export const fetchData = async (newsType) => {
     const {
       data: { results },
     } = await axios.get(
-      `${url}/${newsType}.json?api-key=${process.env.REACT_APP_API_KEY}`,
+      `${url}/${newsType}.json?api-key=${process.env.REACT_APP_API_KEY}`
     );
 
     const modifiedData = {
@@ -24,9 +24,9 @@ export const newsArray = (articleType) => {
     return {
       img: article.multimedia[0].url,
       imgCaption:
-        article.multimedia[0].caption !== ''
+        article.multimedia[0].caption !== ""
           ? article.multimedia[0].caption
-          : 'N/A',
+          : "N/A",
       title: article.title,
       abstract: article.abstract,
       byline: article.byline,

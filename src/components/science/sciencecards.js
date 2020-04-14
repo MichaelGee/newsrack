@@ -1,20 +1,27 @@
 import React from "react";
 
-const ScienceCards = () => {
+const BusinessCards = ({ news }) => {
   return (
-    <div>
+    <div className='card-container'>
       <div className='shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box w-3/12'>
-        {/* <div className="text-sm pb-2">{image}</div> */}
         <div className='text-sm pb-2'>
-          {/* <img src={image} alt='news-article' /> */}
+          <img
+            src={news?.img || "../assets/news.jpg"}
+            loading='lazy'
+            alt='news-article'
+          />
         </div>
-        <div className='text-sm text-gray-600  tracking-tight '>
-          I will never close automatically. This is a purposely very very long
-          description that has many many characters and words.
+        <div className='text-sm text-gray-600 font-bold tracking-tight '>
+          {news?.title}
         </div>
+        <div className='text-sm text-gray-800  tracking-tight '>
+          {news?.abstract}
+        </div>
+        <p>{news?.byline}</p>
+        <p>{new Date(news?.release_date).toDateString()}</p>
       </div>
     </div>
   );
 };
 
-export default ScienceCards;
+export default BusinessCards;
