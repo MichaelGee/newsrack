@@ -9,6 +9,8 @@ import SportsCards from "./components/sports/sportscards";
 import { fetchData } from "./components/api/apicall";
 import { v4 as uuidv4 } from "uuid";
 import { newsArray } from "./components/api/apicall";
+import Loader from "./components/loader";
+import { Name } from "./components/name";
 
 function App() {
   /* World News */
@@ -19,6 +21,7 @@ function App() {
   const [businessData, setBusinessData] = useState([]);
   /* Entertainment */
   const [moviesData, setMoviesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -43,6 +46,7 @@ function App() {
         setSportData(sportsArticles);
         setBusinessData(businessArticles);
         setMoviesData(moviesArticles);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -55,78 +59,89 @@ function App() {
       <Navbar />
       <Banner />
 
-      <div className='ml-0 lg:ml-4'>
-        <div
-          className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
-          role='alert'
-        >
-          <span className='flex rounded-full bg-indigo-600 uppercase px-2 py-1 text-xs font-bold mr-3'>
-            New
-          </span>
-          <span className='font-semibold mr-2 text-left flex-auto'>World</span>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          <div className='ml-0 lg:ml-4'>
+            <div
+              className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              role='alert'
+            >
+              <span className='flex rounded-full bg-indigo-600 uppercase px-2 py-1 text-xs font-bold mr-3'>
+                New
+              </span>
+              <span className='font-semibold mr-2 text-left flex-auto'>
+                World
+              </span>
+            </div>
+          </div>
+          <div className='world-wrapper'>
+            {worldData !== [] &&
+              worldData?.map((article) => (
+                <WorldCards key={uuidv4()} news={article} />
+              ))}
+          </div>
+          <div className='ml-0 lg:ml-4'>
+            <div
+              className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              role='alert'
+            >
+              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+                New
+              </span>
+              <span className='font-semibold mr-2 text-left flex-auto'>
+                Sports
+              </span>
+            </div>
+          </div>
+          <div className='sports-wrapper'>
+            {sportData !== [] &&
+              sportData?.map((article) => (
+                <SportsCards key={uuidv4()} news={article} />
+              ))}
+          </div>
+          <div className='ml-0 lg:ml-4'>
+            <div
+              className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              role='alert'
+            >
+              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+                New
+              </span>
+              <span className='font-semibold mr-2 text-left flex-auto'>
+                Business
+              </span>
+            </div>
+          </div>
+          <div className='business-wrapper'>
+            {businessData !== [] &&
+              businessData?.map((article) => (
+                <BusinessCards key={uuidv4()} news={article} />
+              ))}
+          </div>
+          <div className='ml-0 lg:ml-4'>
+            <div
+              className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              role='alert'
+            >
+              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+                New
+              </span>
+              <span className='font-semibold mr-2 text-left flex-auto'>
+                Box Office
+              </span>
+            </div>
+          </div>
+          <div className='movies-wrapper'>
+            {moviesData !== [] &&
+              moviesData?.map((article) => (
+                <MoviesCards key={uuidv4()} news={article} />
+              ))}
+          </div>
+          <Name />
         </div>
-      </div>
-      <div className='world-wrapper'>
-        {worldData !== [] &&
-          worldData?.map((article) => (
-            <WorldCards key={uuidv4()} news={article} />
-          ))}
-      </div>
-      <div className='ml-0 lg:ml-4'>
-        <div
-          className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
-          role='alert'
-        >
-          <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
-            New
-          </span>
-          <span className='font-semibold mr-2 text-left flex-auto'>Sports</span>
-        </div>
-      </div>
-      <div className='sports-wrapper'>
-        {sportData !== [] &&
-          sportData?.map((article) => (
-            <SportsCards key={uuidv4()} news={article} />
-          ))}
-      </div>
-      <div className='ml-0 lg:ml-4'>
-        <div
-          className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
-          role='alert'
-        >
-          <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
-            New
-          </span>
-          <span className='font-semibold mr-2 text-left flex-auto'>
-            Business
-          </span>
-        </div>
-      </div>
-      <div className='business-wrapper'>
-        {businessData !== [] &&
-          businessData?.map((article) => (
-            <BusinessCards key={uuidv4()} news={article} />
-          ))}
-      </div>
-      <div className='ml-0 lg:ml-4'>
-        <div
-          className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
-          role='alert'
-        >
-          <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
-            New
-          </span>
-          <span className='font-semibold mr-2 text-left flex-auto'>
-            Box Office
-          </span>
-        </div>
-      </div>
-      <div className='movies-wrapper'>
-        {moviesData !== [] &&
-          moviesData?.map((article) => (
-            <MoviesCards key={uuidv4()} news={article} />
-          ))}
-      </div>
+      )}
     </div>
   );
 }
