@@ -8,7 +8,6 @@ import MoviesCards from "./components/movies/moviescards";
 import SportsCards from "./components/sports/sportscards";
 import { fetchData } from "./components/api/apicall";
 import { v4 as uuidv4 } from "uuid";
-import LazyLoad from "react-lazy-load";
 import { newsArray } from "./components/api/apicall";
 
 function App() {
@@ -55,6 +54,7 @@ function App() {
     <div className='App'>
       <Navbar />
       <Banner />
+
       <div className='ml-0 lg:ml-4'>
         <div
           className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
@@ -69,9 +69,7 @@ function App() {
       <div className='world-wrapper'>
         {worldData !== [] &&
           worldData?.map((article) => (
-            <LazyLoad key={uuidv4()}>
-              <WorldCards key={uuidv4()} news={article} />
-            </LazyLoad>
+            <WorldCards key={uuidv4()} news={article} />
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -88,9 +86,7 @@ function App() {
       <div className='sports-wrapper'>
         {sportData !== [] &&
           sportData?.map((article) => (
-            <LazyLoad key={uuidv4()}>
-              <SportsCards key={uuidv4()} news={article} />
-            </LazyLoad>
+            <SportsCards key={uuidv4()} news={article} />
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -109,9 +105,7 @@ function App() {
       <div className='business-wrapper'>
         {businessData !== [] &&
           businessData?.map((article) => (
-            <LazyLoad key={uuidv4()}>
-              <BusinessCards key={uuidv4()} news={article} />
-            </LazyLoad>
+            <BusinessCards key={uuidv4()} news={article} />
           ))}
       </div>
       <div className='ml-0 lg:ml-4'>
@@ -130,9 +124,7 @@ function App() {
       <div className='movies-wrapper'>
         {moviesData !== [] &&
           moviesData?.map((article) => (
-            <LazyLoad key={uuidv4()}>
-              <MoviesCards key={uuidv4()} news={article} />
-            </LazyLoad>
+            <MoviesCards key={uuidv4()} news={article} />
           ))}
       </div>
     </div>
