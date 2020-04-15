@@ -43,9 +43,9 @@
    row-gap: 0.3rem;
 }
 
-@media screen and(max-width: 500px){
+@media screen and (max-width: 450px){
   .loader{
-    right: 3%;
+    right: 3% !important;
   }
 }
 
