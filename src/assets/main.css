@@ -830,6 +830,16 @@ video {
   background-color: #f0fff4;
 }
 
+.bg-lightgreen{
+  background-color:  #cbfffc;
+}
+.color{
+  color:#009387;
+}
+
+.bg-lightgreen2{
+  background-color:#009387;
+}
 .bg-green-200 {
   background-color: #c6f6d5;
 }

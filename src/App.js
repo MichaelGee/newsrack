@@ -65,10 +65,10 @@ function App() {
         <div>
           <div className='ml-0 lg:ml-4'>
             <div
-              className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              className=' p-2 bg-lightgreen color items-center  leading-none lg:rounded-full flex lg:inline-flex'
               role='alert'
             >
-              <span className='flex rounded-full bg-indigo-600 uppercase px-2 py-1 text-xs font-bold mr-3'>
+              <span className='flex rounded-full text-white color bg-lightgreen2 uppercase px-2 py-1 text-xs font-bold mr-3'>
                 New
               </span>
               <span className='font-semibold mr-2 text-left flex-auto'>
@@ -84,10 +84,10 @@ function App() {
           </div>
           <div className='ml-0 lg:ml-4'>
             <div
-              className=' p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              className=' p-2 bg-lightgreen color items-center  leading-none lg:rounded-full flex lg:inline-flex'
               role='alert'
             >
-              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+              <span className='flex rounded-full text-white color bg-lightgreen2 uppercase px-2 py-1 text-xs font-bold mr-3'>
                 New
               </span>
               <span className='font-semibold mr-2 text-left flex-auto'>
@@ -103,10 +103,10 @@ function App() {
           </div>
           <div className='ml-0 lg:ml-4'>
             <div
-              className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              className=' p-2 bg-lightgreen color items-center  leading-none lg:rounded-full flex lg:inline-flex'
               role='alert'
             >
-              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+              <span className='flex rounded-full text-white color bg-lightgreen2 uppercase px-2 py-1 text-xs font-bold mr-3'>
                 New
               </span>
               <span className='font-semibold mr-2 text-left flex-auto'>
@@ -122,10 +122,10 @@ function App() {
           </div>
           <div className='ml-0 lg:ml-4'>
             <div
-              className='p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex'
+              className=' p-2 bg-lightgreen color items-center  leading-none lg:rounded-full flex lg:inline-flex'
               role='alert'
             >
-              <span className='flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3'>
+              <span className='flex rounded-full text-white color bg-lightgreen2 uppercase px-2 py-1 text-xs font-bold mr-3'>
                 New
               </span>
               <span className='font-semibold mr-2 text-left flex-auto'>
