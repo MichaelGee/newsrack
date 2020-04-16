@@ -23,7 +23,7 @@ const Navbar = () => {
                 alt='newpaper_logo'
                 className='w-8 sm:w-10 mr-2'
               />
-              NewSRacK
+              <div className='logo'>NewSRacK</div>
             </div>
           </div>
         </div>
