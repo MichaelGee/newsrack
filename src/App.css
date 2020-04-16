@@ -43,6 +43,14 @@
    row-gap: 0.3rem;
 }
 
+.indicator-container{
+  background-color:  #cbfffc;
+  color:#009387;
+}
+.indicator{
+  background-color:#009387;
+}
+
 @media screen and (max-width: 450px){
   .loader{
     right: 3% !important;
