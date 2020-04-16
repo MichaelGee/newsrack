@@ -3,7 +3,7 @@ import Logo from "../assets/newspaper.png";
 
 const Navbar = () => {
   const prank = () => {
-    alert("🤡🤡🤡🤓");
+    alert("Gotcha!!🤡🤡🤓");
   };
 
   return (
