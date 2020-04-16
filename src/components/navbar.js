@@ -2,13 +2,22 @@ import React from "react";
 import Logo from "../assets/newspaper.png";
 
 const Navbar = () => {
+  const prank = () => {
+    alert("🤡🤡🤡🤓");
+  };
+
   return (
     <div>
       <div className='navbar-container'>
         <div className='container navbar mx-auto px-4'>
           <div className='flex items-center md:justify-between py-4'>
             <div className='w-1/4 md:hidden'>
-              <svg fill='currentColor' viewBox='0 0 20 20' class='w-6 h-6'>
+              <svg
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                class='w-6 h-6'
+                onClick={prank}
+              >
                 <path
                   x-show='!open'
                   fill-rule='evenodd'
