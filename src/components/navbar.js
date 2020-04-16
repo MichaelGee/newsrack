@@ -8,13 +8,14 @@ const Navbar = () => {
         <div className='container navbar mx-auto px-4'>
           <div className='flex items-center md:justify-between py-4'>
             <div className='w-1/4 md:hidden'>
-              {/* <svg
-                className='fill-current text-black h-8 w-8'
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 20 20'
-              >
-                <path d='M16.4 9H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zm0 4H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zM3.6 7h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1z' />
-              </svg> */}
+              <svg fill='currentColor' viewBox='0 0 20 20' class='w-6 h-6'>
+                <path
+                  x-show='!open'
+                  fill-rule='evenodd'
+                  d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z'
+                  clip-rule='evenodd'
+                ></path>
+              </svg>
             </div>
 
             <div className='flex w-1/2 md:w-auto text-center text-black text-2xl font-medium'>
