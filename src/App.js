@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { newsArray } from "./components/api/apicall";
 import Loader from "./components/loader";
 import { Name } from "./components/name";
+import { motion } from "framer-motion";
 
 function App() {
   /* World News */
@@ -79,7 +80,12 @@ function App() {
           <div className='world-wrapper'>
             {worldData !== [] &&
               worldData?.map((article) => (
-                <WorldCards key={uuidv4()} news={article} />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <WorldCards key={uuidv4()} news={article} />
+                </motion.div>
               ))}
           </div>
           <div className='ml-0 lg:ml-4'>
@@ -98,7 +104,12 @@ function App() {
           <div className='sports-wrapper'>
             {sportData !== [] &&
               sportData?.map((article) => (
-                <SportsCards key={uuidv4()} news={article} />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <SportsCards key={uuidv4()} news={article} />
+                </motion.div>
               ))}
           </div>
           <div className='ml-0 lg:ml-4'>
@@ -117,7 +128,12 @@ function App() {
           <div className='business-wrapper'>
             {businessData !== [] &&
               businessData?.map((article) => (
-                <BusinessCards key={uuidv4()} news={article} />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <BusinessCards key={uuidv4()} news={article} />
+                </motion.div>
               ))}
           </div>
           <div className='ml-0 lg:ml-4'>
@@ -136,7 +152,12 @@ function App() {
           <div className='movies-wrapper'>
             {moviesData !== [] &&
               moviesData?.map((article) => (
-                <MoviesCards key={uuidv4()} news={article} />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <MoviesCards key={uuidv4()} news={article} />
+                </motion.div>
               ))}
           </div>
           <Name />
